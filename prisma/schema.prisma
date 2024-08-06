@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Contact {
+  id             Int      @id @default(autoincrement())
+  email          String?
+  phoneNumber    String?
+  linkedId       Int?
+  linkPrecedence String   @default("secondary")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now())
+
+  link Contact? @relation(name: "linkedId", fields: [linkedId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  contact Contact[] @relation(name: "linkedId")
+}
