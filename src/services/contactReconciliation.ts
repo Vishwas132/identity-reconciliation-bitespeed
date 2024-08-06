@@ -1,5 +1,5 @@
 import { Contact } from '../types/contact.js';
-import prisma from "../client.js";;
+import prisma from '../client.js';
 
 export async function findPartialMatchingContacts(
   email: string | null,
@@ -42,9 +42,9 @@ export async function updateContactToSecondary(
   });
 }
 
-export const findAllRelatedContacts = async (
+export async function findAllRelatedContacts(
   contactIds: number[],
-): Promise<Contact[]> => {
+): Promise<Contact[]> {
   const allRelatedContacts: Contact[] = await prisma.contact.findMany({
     where: {
       OR: [{ linkedId: { in: contactIds } }, { id: { in: contactIds } }],
@@ -52,7 +52,7 @@ export const findAllRelatedContacts = async (
     orderBy: [{ createdAt: 'asc' }, { linkPrecedence: 'asc' }],
   });
   return allRelatedContacts;
-};
+}
 
 export async function findExactMatchingContacts({
   email,

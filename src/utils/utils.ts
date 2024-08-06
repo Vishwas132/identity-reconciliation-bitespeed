@@ -1,9 +1,11 @@
-import { Contact } from "./../types/contact.js";
+import { Contact } from './../types/contact.js';
 
 export function createResponseBody(contacts: Contact[]) {
   const primaryContactId = contacts[0].linkedId || contacts[0].id;
   const emails = [
-    ...new Set<string | null>(contacts.map((contact: Contact) => contact.email)),
+    ...new Set<string | null>(
+      contacts.map((contact: Contact) => contact.email),
+    ),
   ];
   const phoneNumbers = [
     ...new Set<string | null>(
@@ -23,4 +25,4 @@ export function createResponseBody(contacts: Contact[]) {
       secondaryContactIds,
     },
   };
-};
+}

@@ -1,4 +1,4 @@
-import {beforeAll, afterAll, beforeEach, describe, it, expect} from 'vitest';
+import { beforeAll, afterAll, beforeEach, describe, it, expect } from 'vitest';
 import request from 'supertest';
 import { app } from '../app.js';
 
@@ -19,7 +19,6 @@ beforeEach(async () => {
 });
 
 describe('POST /identify', () => {
-  const serverUrl = 'http://localhost:3000/identify';
   it('should return 400 if neither email nor phoneNumber is provided', async () => {
     const response = await request(app).post('/identify').send({});
 
@@ -31,8 +30,8 @@ describe('POST /identify', () => {
 
   it('should create a new primary contact when no existing contacts', async () => {
     const response = await request(app)
-        .post('/identify')
-        .send({ email: 'test@example.com', phoneNumber: '1234567890' });
+      .post('/identify')
+      .send({ email: 'test@example.com', phoneNumber: '1234567890' });
 
     expect(response.status).toBe(200);
     expect(response.body).toEqual({
@@ -58,7 +57,7 @@ describe('POST /identify', () => {
     const response = await request(app).post('/identify').send({
       email: 'secondary@example.com',
       phoneNumber: '1234567890',
-    })
+    });
 
     expect(response.status).toBe(200);
     expect(response.body.contact).toEqual({
