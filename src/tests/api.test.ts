@@ -3,19 +3,20 @@ import request from 'supertest';
 import { app } from '../app.js';
 
 import prisma from '../client.js';
+import { deleteAllContacts } from '../services/contactReconciliation.js';
 
 beforeAll(async () => {
   await prisma.$connect();
-  await prisma.$queryRaw`TRUNCATE TABLE "Contact" RESTART IDENTITY;`;
+  await deleteAllContacts();
 });
 
 afterAll(async () => {
-  await prisma.$queryRaw`TRUNCATE TABLE "Contact" RESTART IDENTITY;`;
+  await deleteAllContacts();
   await prisma.$disconnect();
 });
 
 beforeEach(async () => {
-  await prisma.$queryRaw`TRUNCATE TABLE "Contact" RESTART IDENTITY;`;
+  await deleteAllContacts();
 });
 
 describe('POST /identify', () => {

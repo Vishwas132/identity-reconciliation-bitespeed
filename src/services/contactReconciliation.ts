@@ -135,3 +135,7 @@ export async function reconcileContacts(
 
   return allRelatedContacts;
 }
+
+export async function deleteAllContacts(): Promise<void> {
+  await prisma.$queryRaw`TRUNCATE TABLE "Contact" RESTART IDENTITY;`;
+}
