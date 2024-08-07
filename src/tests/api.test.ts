@@ -73,7 +73,7 @@ describe('POST /identify', () => {
 
   it('should link two primary contacts', async () => {
     // Create multiple contacts
-    const newContacts = await prisma.contact.createMany({
+    await prisma.contact.createMany({
       data: [
         {
           email: 'one@example.com',

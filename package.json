@@ -8,29 +8,45 @@
     "dev": "tsx watch .",
     "test": "vitest",
     "build": "tsc",
-    "prod": "node dist/server.js"
+    "prod": "node dist/server.js",
+    "db:migrate:dev": "prisma migrate dev",
+    "db:migrate:prod": "prisma migrate deploy",
+    "prepare": "husky",
+    "format": "prettier --write .",
+    "lint": "eslint . --cache --fix",
+    "lint-staged": "lint-staged"
   },
   "dependencies": {
     "@prisma/client": "^5.17.0",
-    "prisma": "5.17.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "16.0.3",
-    "express": "4.19.2"
+    "express": "4.19.2",
+    "prisma": "5.17.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.8.0",
     "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
+    "@types/eslint__js": "^8.42.3",
     "@types/express": "^4.17.21",
     "@types/supertest": "^6.0.2",
+    "eslint": "^9.8.0",
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.8",
     "prettier": "^3.3.3",
     "supertest": "^7.0.0",
     "tsx": "^4.16.5",
     "typescript": "5.5.4",
+    "typescript-eslint": "^8.0.1",
     "vitest": "^2.0.5"
   },
   "author": "Viswas Lekhwar",
   "git repository": "https://github.com/bitespeedtech/identity-reconciliation",
   "keywords": [],
-  "license": "ISC"
+  "license": "ISC",
+  "lint-staged": {
+    "*.ts": "npm run lint",
+    "*.{ts,css,md}": "npm run format"
+  }
 }
