@@ -22,9 +22,10 @@
     "cors": "^2.8.5",
     "dotenv": "16.0.3",
     "express": "4.19.2",
-    "prisma": "5.17.0"
+    "globals": "^15.9.0"
   },
   "devDependencies": {
+    "prisma": "5.17.0",
     "@eslint/js": "^9.8.0",
     "@types/cookie-parser": "^1.4.7",
     "@types/cors": "^2.8.17",
@@ -42,7 +43,7 @@
     "vitest": "^2.0.5"
   },
   "author": "Viswas Lekhwar",
-  "git repository": "https://github.com/bitespeedtech/identity-reconciliation",
+  "git repository": "https://github.com/Vishwas132/identity-reconciliation-bitespeed.git",
   "keywords": [],
   "license": "ISC",
   "lint-staged": {
