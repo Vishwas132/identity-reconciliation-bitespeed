@@ -91,11 +91,11 @@ npm run prod
 
 ## API Endpoint
 
-The server exposes a single endpoint:
+The server exposes 2 endpoint:
 
 - **POST** `/identify`
 
-The endpoint is hosted on Render and can be accessed at:
+To get a reconciliation result, The endpoint is hosted on Render and can be accessed at:
 
 https://identity-reconciliation-bitespeed-nxmc.onrender.com/identify
 
@@ -120,6 +120,20 @@ Both `email` and `phoneNumber` are optional, but at least one must be provided.
     "phoneNumbers": string[],
     "secondaryContactIds": number[]
   }
+}
+```
+
+- **DELETE** `/all`
+
+To delete all contacts in the database for testing, The endpoint is hosted on Render and can be accessed at:
+
+https://identity-reconciliation-bitespeed-nxmc.onrender.com/all
+
+### Response Format
+
+```json
+{
+  "success": true
 }
 ```
 
